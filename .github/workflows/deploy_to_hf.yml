@@ -19,10 +19,11 @@ jobs:
 
     - name: Install Git LFS
       run: |
+        sudo apt-get update
         sudo apt-get install git-lfs
         git lfs install
 
-        - name: Push to Hugging Face Space
+    - name: Push to Hugging Face Space
       env:
         HF_TOKEN: ${{ secrets.HF_TOKEN }}
       run: |
