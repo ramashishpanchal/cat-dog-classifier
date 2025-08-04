@@ -8,12 +8,19 @@ import numpy as np
 from PIL import Image
 
 # Load model
-model = load_model('E:\Ashish Projects\Project 5\cat_dog_detection.keras')
 
 st.title("🐶🐱 Cat vs Dog Classifier")
+st.text("Checking for model file...")
+
+if os.path.exists("model.keras"):
+    st.success("✅ model.keras found!")
+    model = load_model("cat_dog_detection.keras")
+    st.success("✅ Model loaded successfully.")
+else:
+    st.error("❌ model.keras not found.")
 
 # Upload image
-uploaded_file = st.file_uploader("pexels-kmerriman-20787.jpg", type=["jpg", "jpeg", "png"])
+uploaded_file = st.file_uploader("Upload a cat or dog image", type=["jpg", "jpeg", "png"])
 
 if uploaded_file is not None:
     # Display image
