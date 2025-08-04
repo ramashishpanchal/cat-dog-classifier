@@ -1,38 +1,19 @@
-name: Deploy to Hugging Face Space
-
+name: Deploy to Hugging Face
 on:
   push:
     branches: [main]
-
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Repo
-      uses: actions/checkout@v3
-
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-
-    - name: Install Git LFS
-      run: |
-        sudo apt-get update
-        sudo apt-get install git-lfs
-        git lfs install
-
-    - name: Push to Hugging Face Space
-      env:
-        HF_TOKEN: ${{ secrets.HF_TOKEN }}
-      run: |
-        git config --global user.email "ram.ashishpanchal@gmail.com"
-        git config --global user.name "ramashishpanchal"
-
-        git clone https://huggingface_hub:${MY_HF_TOKEN}@huggingface.co/spaces/ramashishpanchal/hf-space
-        rsync -av --exclude='.git' ./ hf-space/
-        cd hf-space
-        git add .
-        git commit -m "🚀 Auto deploy from GitHub" || echo "Nothing to commit"
-        git push https://huggingface_hub:${MY_HF_TOKEN}@huggingface.co/spaces/ramashishpanchal/hf-space
+      - name: Checkout repo
+        uses: actions/checkout@v4
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+      - name: Push to Hugging Face
+        uses: huggingface/huggingface_hub@main
+        with:
+          huggingface_token: ${{ secrets.HF_TOKEN }}
+          repo_id: "ramashishpanchal/hf-space"
+          path: "."
+          commit_message: "GitHub Actions auto-deploy"
