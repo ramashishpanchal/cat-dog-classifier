@@ -1,3 +1,10 @@
+---
+title: Cat-Dog Classifier 🐶🐱
+sdk: streamlit
+app_file: main.py
+---
+
+
 # 🐱🐶 Cat vs Dog Image Classifier (Tested with Streamlit)
 
 A deep learning project to classify images of cats and dogs using a **Convolutional Neural Network (CNN)** built with **TensorFlow/Keras**, and tested locally using **Streamlit** for an interactive interface.
