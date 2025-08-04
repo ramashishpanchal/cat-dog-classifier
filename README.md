@@ -1,7 +1,7 @@
 ---
 title: Cat-Dog Classifier 🐶🐱
 sdk: streamlit
-app_file: app.py
+app_file: main.py
 ---
 
 
