@@ -1,0 +1,38 @@
+name: Deploy to Hugging Face Spaces
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install Git LFS
+      run: |
+        sudo apt-get install git-lfs
+        git lfs install
+
+    - name: Push to Hugging Face Space
+      env:
+        HF_TOKEN: ${{ secrets.HF_TOKEN }}
+      run: |
+        git config --global user.email "ram.ashishpanchal@gmail.com"
+        git config --global user.name "ramashishpanchal"
+
+        git clone https://huggingface.co/spaces/ramashishpanchal/cat-dog-classifier
+        cd cat-dog-classifier
+
+        cp -r ../* ./
+        git add .
+        git commit -m "🚀 Auto deploy from GitHub"
+        git push https://huggingface.co/ramashishpanchal/cat-dog-classifier
