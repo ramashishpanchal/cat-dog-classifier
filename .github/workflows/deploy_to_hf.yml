@@ -30,9 +30,9 @@ jobs:
         git config --global user.email "ram.ashishpanchal@gmail.com"
         git config --global user.name "ramashishpanchal"
 
-        git clone https://huggingface_hub:${HF_TOKEN}@huggingface.co/spaces/ramashishpanchal/hf-space
+        git clone https://huggingface_hub:${MY_HF_TOKEN}@huggingface.co/spaces/ramashishpanchal/hf-space
         rsync -av --exclude='.git' ./ hf-space/
         cd hf-space
         git add .
         git commit -m "🚀 Auto deploy from GitHub" || echo "Nothing to commit"
-        git push https://huggingface_hub:${HF_TOKEN}@huggingface.co/spaces/ramashishpanchal/hf-space
+        git push https://huggingface_hub:${MY_HF_TOKEN}@huggingface.co/spaces/ramashishpanchal/hf-space
