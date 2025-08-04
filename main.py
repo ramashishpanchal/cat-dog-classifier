@@ -1,3 +1,6 @@
+import os
+os.environ['STREAMLIT_CONFIG_DIR'] = os.path.expanduser('~/.streamlit')
+
 import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing import image
