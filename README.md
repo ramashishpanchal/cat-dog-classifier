@@ -31,6 +31,6 @@ A simple **Streamlit interface** is used locally to test the model by uploading 
 ## 🔗 Model Link
 
 Explore the model and code on **Kaggle**:  
-👉 [Cat vs Dog Classifier – Kaggle Notebook](https://www.kaggle.com/code/ramashishpanchal/cats-vs-dogs)
+👉 [Cat vs Dog Classifier – Kaggle Notebook] (https://www.kaggle.com/code/ramashishpanchal/cats-vs-dogs)
 
 
