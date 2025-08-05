@@ -8,16 +8,17 @@ import numpy as np
 from PIL import Image
 
 # Load model
+model_path="cat_dog_detection.keras"
 
 st.title("🐶🐱 Cat vs Dog Classifier")
 st.text("Checking for model file...")
 
-if os.path.exists("model.keras"):
-    st.success("✅ model.keras found!")
-    model = load_model("cat_dog_detection.keras")
+if os.path.exists(model_path):
+    st.success("✅ model found!")
+    model = load_model(model_path)
     st.success("✅ Model loaded successfully.")
 else:
-    st.error("❌ model.keras not found.")
+    st.error("❌ model not found.")
 
 
 # Upload image
